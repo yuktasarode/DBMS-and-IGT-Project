@@ -1,0 +1,118 @@
+.myButton {
+	box-shadow:inset 0 1px 0 0 #f29c93;
+	background:linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
+	background-color:#fe1a00;
+	border-radius:6px;
+	border:1px solid #d83526;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0 1px 0 #b23e35;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+.space{
+	margin: 50px 10px 50px 10px;
+}
+
+.myButton:hover {
+	background:linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
+	background-color:#ce0100;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+.cardstarter{
+	margin-top: 25px;
+	margin-bottom: 50px;
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+
+
+.data{
+  border: 1px solid black;
+}
+.tab{
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  width:90%;
+}
+.tab1{
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width:95%;
+	height:500px;
+	text-align: center;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+.list{
+  margin-top: 25px;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Source Serif Pro', serif;
+}
+
+.form{
+	 margin-right: 40px;
+	 width:35%;
+    height: 34px;
+    padding-top: 6px;
+    padding-right: 12px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+		border-radius: 4px;
+
+}
+
+
+
+.before{
+  margin-top: 25px;
+}
+
+.title{
+   text-align: center;
+   margin: 50px auto 0 auto;
+   color: red;
+   font-family: 'Cairo', sans-serif;
+}
+
+#Myslider{
+
+  width: 100%;
+  height: 35%;
+  display: inline-block;
+
+}
+.footer{
+  margin-top: 50px;
+  background-color: #323232;
+}
+.c{
+  color: white;
+  text-align: center;
+  font-size: 12px;
+}

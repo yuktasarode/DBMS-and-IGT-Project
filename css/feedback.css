@@ -1,0 +1,11 @@
+.feedback{
+  text-align:center;
+width: 80%;
+height: 450px;
+padding: 15px;
+background-color: #dbdbdb;
+box-shadow: 2px 2px 12px grey;margin:0 auto;
+}
+.paragraph{
+  margin: 16px 30px 16px 30px;
+}

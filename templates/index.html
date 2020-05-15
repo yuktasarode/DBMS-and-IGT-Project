@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>WingsOfLife</title>
+  <link rel="stylesheet" type="text/css" href="{% static "css/styles.css"%}">
+  <link rel="icon" href="{% static "images/redwings.jpg" %}">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Sacramento&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cairo|Source+Serif+Pro&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href=""><img src="{% static "images/redwings.jpg"%}" alt="" width="50px" height="60px"> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'basic_app:index' %}">Home</a>
+        </li>
+        {%if user.is_authenticated %}
+        {%if userIsBank%}
+        <li>
+          <a class="nav-link" href="{%url 'basic_app:bloodbank_home'%}">Profile</a>
+        </li>
+        {%endif%}
+        {%else%}
+        <li class="nav-item">
+          <a class="nav-link" href="{%url 'basic_app:login_bloodbank'%}">Blood Bank Login</a>
+        </li>
+        {%endif%}
+        <!--<li class="nav-item">
+          <a class="nav-link" href="{%url 'basic_app:login_bloodbank'%}">Blood Bank Login</a>
+        </li>
+        <a href="{%url 'basic_app:login_bloodbank'%}" class="myButton" style="margin:20px;">BloodBank Login</a>
+        -->
+
+
+        <li class="nav-item ">
+          <a class="nav-link" href="{% url 'app:drop' %}">Current Requests</a>
+        </li>
+        <li>
+          <a class="nav-link" href="{% url 'basic_app:get_reports' %}">Get Reports</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'app:about' %}">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contact:contactview' %}">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'app:feedback' %}">Feedback</a>
+        </li>
+        <!--{%if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          </li>
+
+          <li>
+            <a class="nav-link" href="{% url 'basic_app:editdetails' %}">Edit details</a>
+          </li>
+
+        {%else%}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'basic_app:user_login' %}">Login</a>
+          </li>
+        {%endif%}-->
+
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        {%if user.is_authenticated %}
+        {%if userIsBank%}
+        {% else %}
+        <h3>Donations: {{don.No_of_donations}}</h3>
+        {% endif %}
+        <a href="{% url 'logout' %}" class="myButton" style="margin:20px;">Logout</a>
+        <a href="{% url 'basic_app:editdetails' %}" class="myButton" style="margin:20px;">Edit Details</a>
+        {%else%}
+        <a href="{% url 'basic_app:user_login' %}" class="myButton" style="margin:20px;">User Login</a>
+        {%endif%}
+        {%if user.is_anonymous%}
+        <a href="{% url 'basic_app:register' %}" class="myButton">User SignUp</a>
+        {%endif%}
+      </form>
+    </div>
+  </nav>
+
+  <!--Carousel-->
+  <div id="Myslider" class="carousel slide" data-ride="carousel" data-interval="4000" data-pause="hover">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="{% static "images/raktdaan.png"%}" alt="First slide" height="350" width="42">
+      </div>
+      <div class="carousel-item ">
+        <img class="d-block w-100" src="{% static "images/car4.jpg"%}" alt="Second slide" height="350" width="42">
+      </div>
+
+      <div class="carousel-item ">
+        <img class="d-block w-100" src="{% static "images/car1.jpg"%}" alt="Second slide" height="350" width="42">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="{% static "images/car2.jpg"%}" alt="Third slide" height="350" width="42">
+      </div>
+    </div>
+
+  </div>
+
+
+ <!-- BloodGroup Cards-->
+
+<h1 class="title"> TOTAL REGISTERED DONORS </h1>
+<br>
+<br>
+
+<div class="container" style="margin: auto;">
+
+
+  <div class="card-deck cen">
+    <div class="card text-white bg-info mb-3" style=" text-align: center;">
+      <div class="card-body">
+        <h2 class="card-title">A+</h2>
+        <p class="card-text">  {{ aplus }}  </p>
+      </div>
+    </div>
+
+    <div class="card text-white bg-danger mb-3" style="text-align: center;">
+      <div class="card-body">
+        <h2 class="card-title">A-</h2>
+        <p class="card-text">{{ amin }}</p>
+      </div>
+    </div>
+
+    <div class="card text-white bg-info mb-3" style="text-align: center;">
+      <div class="card-body">
+        <h2 class="card-title">AB+</h2>
+        <p class="card-text">{{ abplus }}</p>
+      </div>
+    </div>
+
+    <div class="card text-white bg-danger mb-3" style="text-align: center;">
+      <div class="card-body">
+        <h2 class="card-title">AB-</h2>
+        <p class="card-text">{{ abmin }}</p>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+  <br>
+<br>
+  <!-- 2nd row-->
+  <div class="container" style="margin: auto;">
+
+
+    <div class="card-deck cen">
+      <div class="card text-white bg-danger mb-3" style=" text-align: center;">
+        <div class="card-body">
+          <h2 class="card-title">B+</h2>
+          <p class="card-text">{{ bplus }}</p>
+        </div>
+      </div>
+
+      <div class="card text-white bg-info mb-3" style="text-align: center;">
+        <div class="card-body">
+          <h2 class="card-title">B-</h2>
+          <p class="card-text">{{ bmin }}</p>
+        </div>
+      </div>
+
+      <div class="card text-white bg-danger mb-3" style="text-align: center;">
+        <div class="card-body">
+          <h2 class="card-title">O+</h2>
+          <p class="card-text">{{ oplus }}</p>
+        </div>
+      </div>
+
+      <div class="card text-white bg-info mb-3" style="text-align: center;">
+        <div class="card-body">
+          <h2 class="card-title">O-</h2>
+          <p class="card-text"> {{ omin }}</p>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+<h1 class="title"> OTHER STATISTICS </h1>
+<br>
+
+<div class="container" style="margin: auto;">
+
+
+  <div class="card-deck cen">
+    <div class="card text-white bg-warning mb-3" style=" text-align: center;">
+      <div class="card-body">
+        <h5 class="card-title">Active Government Blood Banks</h5>
+        <p class="card-text">{{ bgovt }}</p>
+      </div>
+    </div>
+
+    <div class="card text-white bg-danger mb-3" style="text-align: center;">
+      <div class="card-body">
+        <h5 class="card-title">Active Charity Blood Banks</h5>
+        <p class="card-text">{{ bpri }}</p>
+      </div>
+    </div>
+
+    <div class="card text-white bg-warning mb-3" style="text-align: center;">
+      <div class="card-body">
+        <h5 class="card-title">Active Camps</h5>
+        <p class="card-text">{{ camps }}</p>
+      </div>
+    </div>
+
+    <div class="card text-white bg-danger mb-3" style="text-align: center;">
+      <div class="card-body">
+        <h5 class="card-title">Active Requests</h5>
+        <p class="card-text">{{ req }}</p>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+<br>
+  <div class="services">
+    <h1 class="title"> OUR INITIATIVES</h1>
+    <!-- cards -->
+    <div class="cardstarter">
+      <div class="card-deck">
+
+        <div class="card text-center" style="width: 18rem;">
+          <img src="{% static "images/stockf.jpg"%}" class="card-img-top" alt="..." height="175">
+          <div class="card-body">
+            <h5 class="card-title">Stock Availabilty</h5>
+            <p class="card-text">Get the status of blood stock in blood banks.</p>
+            <a href="{%url 'basic_app:stock_availability' %}" class="btn btn-danger">Check</a>
+          </div>
+        </div>
+
+
+        <div class="card text-center" style="width: 18rem;">
+          <img src="{% static "images/acamp.jpg"%}" class="card-img-top" alt="..." height="170">
+          <div class="card-body">
+            <h5 class="card-title">Camps Active</h5>
+            <p class="card-text">View and register for blood donation camps.</p>
+            <a href="{%url 'basic_app:camps' %}" class="btn btn-danger">Check</a>
+          </div>
+        </div>
+
+        <div class="card text-center" style="width: 18rem;">
+          <img src="{% static "images/req.jpg"%}" class="card-img-top" alt="..." height="175">
+          <div class="card-body">
+            <h5 class="card-title">Request Blood</h5>
+            <p class="card-text">Provide details of blood requirement</p>
+            <a href="{% url 'app:reqblood' %}" class="btn btn-danger">Request</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="cardstarter">
+      <div class="card-deck">
+
+        <div class="card text-center" style="width: 18rem;">
+          <img src="{% static "images/loc.png"%}" class="card-img-top" alt="..." height="175">
+          <div class="card-body">
+            <h5 class="card-title">Near-By Blood Banks</h5>
+            <p class="card-text">Get navigation details of blood banks.</p>
+            <a href="{% url 'app:citybb' %}" class="btn btn-danger">Locate</a>
+          </div>
+
+        </div>
+
+
+        <div class="card text-center" style="width: 18rem;">
+          <img src="{% static "images/stats.png"%}" class="card-img-top" alt="..." height="175">
+          <div class="card-body">
+            <h5 class="card-title">Visual Statistics</h5>
+            <p class="card-text">Get charts displaying Indian blood donation statistics.</p>
+            <a href="http://127.0.0.1:8000/chart" class="btn btn-danger">View</a>
+          </div>
+        </div>
+
+        <div class="card text-center" style="width: 18rem;">
+          <img src="{% static "images/donor.png"%}" class="card-img-top" alt="..." height="175">
+          <div class="card-body">
+            <h5 class="card-title">Near-by-Donors</h5>
+            <p class="card-text">Get details of near-by voluntary donors.</p>
+            <a href="{% url 'app:cityreq' %}" class="btn btn-danger">Find</a>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="cardstarter">
+      <div class="card-deck">
+
+        <div class="card text-center" style="width: 18rem;">
+          <img src="{% static "images/bbsym1.jpg"%}" class="card-img-top" alt="..." height="175">
+          <div class="card-body">
+            <h5 class="card-title">Indian Blood Banks</h5>
+            <p class="card-text">View all BloodBanks on map of India</p>
+            <a href="{% url 'app:bbmap' %}" class="btn btn-danger">Locate</a>
+          </div>
+
+        </div>
+
+
+        <div class="card text-center" style="width: 18rem;">
+          <img src="{% static "images/hosp.png"%}" class="card-img-top" alt="..." height="175">
+          <div class="card-body">
+            <h5 class="card-title">Indian Hospitals</h5>
+            <p class="card-text">View all Hospitals on map of India</p>
+            <a href="{% url 'app:hmap' %}" class="btn btn-danger">Locate</a>
+          </div>
+        </div>
+
+        <div class="card text-center" style="width: 18rem;">
+          <img src="{% static "images/user.jpg"%}" class="card-img-top" alt="..." height="175">
+          <div class="card-body">
+            <h5 class="card-title">Registered Donors</h5>
+            <p class="card-text">Get details of all donors on map of India.</p>
+            <a href="{% url 'app:dmap' %}" class="btn btn-danger">Find</a>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+
+  <div class="compatible">
+    <h1 class="title"> COMPATIBLE BLOOD TYPES</h1>
+    <table class="tab data">
+
+
+      <tr>
+        <td class="data"><b>Blood Type</b></td>
+        <td class="data"><b>Donate Blood To</b></td>
+        <td class="data"><b>Receive Blood From</b></td>
+      </tr>
+
+      <tr>
+        <td class="data"><span style="color:#961e1b"><b>A+</b></span></td>
+        <td class="data">A+ AB+</td>
+        <td class="data">A+ A- O+ O-</td>
+      </tr>
+
+      <tr>
+        <td class="data"><span style="color:#961e1b"><b>O+</b></span></td>
+        <td class="data">A+ AB+ O+ B+</td>
+        <td class="data">O+ O-</td>
+      </tr>
+
+      <tr>
+        <td class="data"><span style="color:#961e1b"><b>B+</b></span></td>
+        <td class="data">B+ AB+</td>
+        <td class="data">B+ B- O+ O-</td>
+      </tr>
+
+      <tr>
+        <td class="data"><span style="color:#961e1b"><b>AB+</b></span></td>
+        <td class="data">AB+</td>
+        <td class="data">Everyone</td>
+      </tr>
+
+      <tr>
+        <td class="data"><span style="color:#961e1b"><b>A-</b></span></td>
+        <td class="data">A+ AB+ A- AB-</td>
+        <td class="data">A- O-</td>
+      </tr>
+
+      <tr>
+        <td class="data"><span style="color:#961e1b"><b>O-</b></span></td>
+        <td class="data">Everyone</td>
+        <td class="data">O-</td>
+      </tr>
+
+      <tr>
+        <td class="data"><span style="color:#961e1b"><b>B-</b></span></td>
+        <td class="data">B+ B- AB+ AB-</td>
+        <td class="data">B- O-</td>
+      </tr>
+
+      <tr>
+        <td class="data"><span style="color:#961e1b"><b>AB-</b></span></td>
+        <td class="data">AB- AB+</td>
+        <td class="data">A- B- AB- O-</td>
+      </tr>
+
+    </table>
+
+  </div>
+
+  <div class="facts">
+    <h1 class="title"> BEFORE YOU DONATE</h1>
+    <ul class="before">
+      <li class="list"> Donating blood is a safe, simple, and rewarding experience that usually takes 30 minutes.</li>
+
+      <li class="list">
+        To be able to donate blood, your weight should be atleast 45 kgs and you should be at least 18 years old and healthy in general.
+      </li>
+
+      <li class="list">
+        If you have any particular health concerns then inform the blood bank at the time of blood donation.
+      </li>
+
+      <li class="list">
+        After donating, it is recommended that you increase your fluid intake for the next 24 to 48 hours; avoid strenuous physical exertion, heavy lifting or pulling with the donation arm for about five hours</li>
+    </ul>
+
+  </div>
+
+  <div class="footer">
+    <h1 class="title">IMPORTANT DAYS</h1>
+    <div class="impdays">
+      <div class="container">
+        <div class="row space">
+          <div class="col-lg-3 col-sm-6 thumbnail">
+            <a href="https://en.wikipedia.org/wiki/World_Health_Day"><img src="{% static "images/worldhealthday.jpg"%}" alt="..." height=175px width=210px></a>
+          </div>
+          <div class="col-lg-3 col-sm-6 thumbnail">
+            <a href="http://www.sankalpindia.net/news/why-1st-october-celebrated-national-voluntary-blood-donor-day"><img src="{% static "images/vol.jpeg"%}" alt="..." height=175px width=210px></a>
+          </div>
+          <div class="col-lg-3 col-sm-6 thumbnail">
+            <a href="https://en.wikipedia.org/wiki/World_Blood_Donor_Day"><img src="{% static "images/worldDonationDay.png"%}" alt="..." height=175px width=210px></a>
+          </div>
+          <div class="col-lg-3 col-sm-6 thumbnail">
+            <a href="https://www.nhp.gov.in/international-thalassaemia-day_pg"><img src="{% static "images/thal.jpeg"%}" alt="..." height=175px width=210px></a>
+          </div>
+
+
+        </div>
+      </div>
+
+
+
+
+    </div>
+    <p class="c">© 2020 TEAM-16.</p>
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

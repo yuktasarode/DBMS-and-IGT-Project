@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>EditProfile</title>
+    <link rel="stylesheet" href="basic_app/unnati.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style media="screen">
+    .centerPage{
+      align:center;
+    }
+    /* The sidebar menu */
+    .sidenav {
+      height: 100%; /* Full-height: remove this if you want "auto" height */
+      width: 160px; /* Set the width of the sidebar */
+      position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+      z-index: 1; /* Stay on top */
+      top: 0; /* Stay at the top */
+      left: 0;
+      background-color: #D0D0D0;
+      overflow-x: hidden; /* Disable horizontal scroll */
+      padding-top: 20px;
+    }
+
+    /* The navigation menu links
+    .sidenav a {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+    }
+
+    /* When you mouse over the navigation links, change their color */
+
+
+    /* Style page content */
+    .main {
+      margin-left: 160px; /* Same as the width of the sidebar */
+      padding: 0px 10px;
+    }
+
+    /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+
+    .table{
+      background-color: :black;
+    }
+
+    #about
+    {
+      background-color:black;
+      font-size:20px;
+      text-align:left;
+      padding:3% 10%;
+    }
+    h1{
+      color:red;
+    }
+
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Side navigation -->
+    <div class="sidenav">
+      <a href="{%url 'basic_app:stock_availability' %}"  class="nav-link">View stock in nearby blood banks</a>
+      <a href="{%url 'app:bbmap' %}"  class="nav-link">View Map</a>
+      <a href="{%url 'basic_app:show_donations' %}"  class="nav-link">Your donations</a>
+    </div>
+
+    <div class="main">
+
+
+    <!-- <nav class="navbar navbar-color-on-scroll navbar-transparent navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
+      <div class="container">
+        <div class="navbar-translate">
+          <a class="navbar-brand" href="#" style="color:black">
+            Blood bank website</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav  mr-auto mt-2 mt-lg-0">
+            <li class="dropdown nav-item">
+              <a href="#" class="nav-link">
+                <i class="fas fa-home fa-lg"></i>  Home
+              </a>
+
+            </li>
+            <li class="dropdown nav-item">
+              <a href="#" class="nav-link">
+                <i class="fas fa-arrow-circle-right fa-lg"></i> About Us
+              </a>
+
+            </li>
+            <li class="dropdown nav-item">
+              <a href="#" class="nav-link">
+                <i class="fas fa-phone-square-alt fa-lg"></i> Contact Us
+              </a>
+            </li>
+
+            <li class="dropdown nav-item">
+              <a href="#" class="nav-link"  style="color:black"  id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-user fa-lg"></i>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Edit Profile</a>
+                  <a class="dropdown-item" href="#"><i class="fas fa-tint"></i> Donation Camps</a>
+                  <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+      </div>
+    </nav> -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="">Wings of Life</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact Us</a>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0">
+        <a href="#" class="nav-link" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-user fa-lg"></i>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Edit Profile</a>
+            <a class="dropdown-item" href="#"><i class="fas fa-tint"></i> Donation Camps</a>
+            <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </div>
+        </a>
+      </form>
+    </div>
+  </nav>
+    <br><br><br>
+
+
+  <div class="jumbotron centerPage">
+    <h1>Add New Donation</h1>
+    <div class="container">
+      <form action="{%url 'basic_app:adddonations'%}" method="post">
+          {%csrf_token%}
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="organizationname">Organization name</label>
+            <input type="text" class="form-control" id="organizationname" name="organizationname">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="organizationdate">Organization date</label>
+            <input type="text" class="form-control" id="organizationdate" name="organizationdate">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="conductedby">Conducted by</label>
+          <input type="text" class="form-control" id="conductedby" name="conductedby">
+        </div>
+
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="organizationcontact">Contact Number</label>
+            <input type="number" class="form-control" id="organizationcontact" name="organizationcontact">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="organizationdistrict">District</label>
+            <input type="text" class="form-control" id="organizationdistrict" name="organizationdistrict">
+
+          </div>
+        </div>
+
+
+
+        <div class="form-row">
+          <div class="form-group  col-md-6">
+            <label for="code">Code</label>
+            <input type="text" class="form-control" id="code" name="code" placeholder="Enter camp code">
+          </div>
+
+
+          <div class="form-group col-md-6">
+            <label for="state">State</label>
+            <select id="state" class="form-control" name="state">
+              <option selected>Maharashtra</option>
+              <option>Andhra Pradesh</option>
+              <option>Arunachal Pradesh (AR)</option>
+              <option>Assam (AS)</option>
+              <option>Bihar (BR)</option>
+              <option>Chhattisgarh (CG)</option>
+              <option>Goa (GA)</option>
+              <option>Gujarat (GJ)</option>
+              <option>Haryana (HR)</option>
+              <option>Himachal Pradesh (HP)</option>
+              <option>Jammu and Kashmir (JK)</option>
+              <option>Jharkhand (JH)</option>
+              <option>Karnataka (KA)</option>
+              <option>Kerala (KL)</option>
+              <option>Madhya Pradesh (MP)</option>
+              <option>Manipur (MN)</option>
+              <option>Meghalaya (ML)</option>
+              <option>Nagaland (NL)</option>
+              <option>Mizoram (MZ)</option>
+              <option>Punjab (PB)</option>
+              <option>Odisha(OR)</option>
+              <option>Rajasthan (RJ)</option>
+              <option>Sikkim (SK)</option>
+              <option>Tamil Nadu (TN)</option>
+              <option>Telangana (TS)</option>
+              <option>Tripura (TR)</option>
+              <option>Uttar Pradesh (UP)</option>
+              <option>Uttarakhand</option>
+              <option>West Bengal (WB)</option>
+
+            </select>
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-danger">Add</button>
+      </form>
+
+    </div>
+
+  </div>
+
+
+      <footer id="about">
+      <table class="table" style="width:100%">
+        <tr>
+          <th><a href="">Legal</th>
+          <th><a href="">Social Media</th>
+        </tr>
+        <tr>
+        <td><a href="">Disclaimer</a></td>
+        <td>
+          <a href=""><i class="fab fa-twitter"></i></a>
+          <a href=""><i class="fab fa-facebook-f"></i></a>
+          <a href=""><i class="fab fa-instagram"></i></a>
+          <a href=""><i class="fas fa-envelope"></i></a>
+        </td>
+        </tr>
+        <tr>
+        <td><a href="">Terms and conditions</a></td>
+        <td></td>
+        </tr>
+        <tr>
+        <td><a href="">Private Policy</a></td>
+        <td></td>
+        </tr>
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        </tr>
+      </table>
+      </footer>
+</div>
+
+
+    <script src="https://kit.fontawesome.com/e92ddfb58e.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  </body>
+</html>

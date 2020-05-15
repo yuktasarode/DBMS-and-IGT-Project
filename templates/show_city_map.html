@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_45ef3eb831ea4f1da676ca027d26d27d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_45ef3eb831ea4f1da676ca027d26d27d" ></div>
+        
+</body>
+<script>    
+    
+            var map_45ef3eb831ea4f1da676ca027d26d27d = L.map(
+                "map_45ef3eb831ea4f1da676ca027d26d27d",
+                {
+                    center: [19.120128, 72.889139],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_3d219bbfac544441b9987e715e71212c = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_45ef3eb831ea4f1da676ca027d26d27d);
+        
+    
+            var marker_4ab4f79b79304a62b2fec9cb325969c8 = L.marker(
+                [19.120128, 72.889139],
+                {}
+            ).addTo(map_45ef3eb831ea4f1da676ca027d26d27d);
+        
+    
+        var popup_acd057e740d04d1dbea3dd873efd1762 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_cffc7ad4430241308ad2a2fb61547595 = $(`<div id="html_cffc7ad4430241308ad2a2fb61547595" style="width: 100.0%; height: 100.0%;"><a href="https://www.google.com/maps/dir/?api=1&destination=19.1998,72.8426">GetDirection</a></div>`)[0];
+            popup_acd057e740d04d1dbea3dd873efd1762.setContent(html_cffc7ad4430241308ad2a2fb61547595);
+        
+
+        marker_4ab4f79b79304a62b2fec9cb325969c8.bindPopup(popup_acd057e740d04d1dbea3dd873efd1762)
+        ;
+
+        
+    
+    
+            marker_4ab4f79b79304a62b2fec9cb325969c8.bindTooltip(
+                `<div>
+                     Blood Group:B+, Donations: 2 , Contact:8787989898
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_35084513906d426aacb54b873c734b02 = L.marker(
+                [19.1364, 72.8296],
+                {}
+            ).addTo(map_45ef3eb831ea4f1da676ca027d26d27d);
+        
+    
+        var popup_b4b07af5ec844c819029573e9f0d6243 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_fafcf01445144f09badff4df4c870372 = $(`<div id="html_fafcf01445144f09badff4df4c870372" style="width: 100.0%; height: 100.0%;"><a href="https://www.google.com/maps/dir/?api=1&destination=19.1998,72.8426">GetDirection</a></div>`)[0];
+            popup_b4b07af5ec844c819029573e9f0d6243.setContent(html_fafcf01445144f09badff4df4c870372);
+        
+
+        marker_35084513906d426aacb54b873c734b02.bindPopup(popup_b4b07af5ec844c819029573e9f0d6243)
+        ;
+
+        
+    
+    
+            marker_35084513906d426aacb54b873c734b02.bindTooltip(
+                `<div>
+                     Blood Group:B+, Donations: 4 , Contact:7812345654
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0ac1cd6349be4deb8cf444811302da06 = L.marker(
+                [19.1998, 72.8426],
+                {}
+            ).addTo(map_45ef3eb831ea4f1da676ca027d26d27d);
+        
+    
+        var popup_a506eb11c7c44477bc0677500e907be2 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5327ed25ecc4442f89242bd5ce159adf = $(`<div id="html_5327ed25ecc4442f89242bd5ce159adf" style="width: 100.0%; height: 100.0%;"><a href="https://www.google.com/maps/dir/?api=1&destination=19.1998,72.8426">GetDirection</a></div>`)[0];
+            popup_a506eb11c7c44477bc0677500e907be2.setContent(html_5327ed25ecc4442f89242bd5ce159adf);
+        
+
+        marker_0ac1cd6349be4deb8cf444811302da06.bindPopup(popup_a506eb11c7c44477bc0677500e907be2)
+        ;
+
+        
+    
+    
+            marker_0ac1cd6349be4deb8cf444811302da06.bindTooltip(
+                `<div>
+                     Blood Group:B+, Donations: 4 , Contact:8966345212
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a45ad0819161463bbcf493922d2bdc03 = L.marker(
+                [19.079, 72.908],
+                {}
+            ).addTo(map_45ef3eb831ea4f1da676ca027d26d27d);
+        
+    
+        var popup_8cd0df31b0174d8d940a533301a92a76 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ea2df930a6ea41c78832bbdb94be7887 = $(`<div id="html_ea2df930a6ea41c78832bbdb94be7887" style="width: 100.0%; height: 100.0%;"><a href="https://www.google.com/maps/dir/?api=1&destination=19.1998,72.8426">GetDirection</a></div>`)[0];
+            popup_8cd0df31b0174d8d940a533301a92a76.setContent(html_ea2df930a6ea41c78832bbdb94be7887);
+        
+
+        marker_a45ad0819161463bbcf493922d2bdc03.bindPopup(popup_8cd0df31b0174d8d940a533301a92a76)
+        ;
+
+        
+    
+    
+            marker_a45ad0819161463bbcf493922d2bdc03.bindTooltip(
+                `<div>
+                     Blood Group:B+, Donations: 2 , Contact:7890789088
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>

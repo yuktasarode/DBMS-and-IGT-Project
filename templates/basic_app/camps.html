@@ -1,0 +1,229 @@
+<!-- <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Camps</title>
+    <link rel="stylesheet" href="blood.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+  -->
+  <!DOCTYPE html>
+  {% load static %}
+  <html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>WingsOfLife</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/styles.css"%}">
+    <link rel="icon" href="{% static "images/redwings.jpg" %}">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cairo|Source+Serif+Pro&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href=""><img src="{% static "images/redwings.jpg"%}" alt="" width="50px" height="60px"> </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'basic_app:index' %}">Home</a>
+          </li>
+          {%if user.is_authenticated %}
+          {%if userIsBank%}
+          <li>
+            <a class="nav-link" href="{%url 'basic_app:bloodbank_home'%}">Home</a>
+          </li>
+          {%endif%}
+          {%else%}
+          <li class="nav-item">
+            <a class="nav-link" href="{%url 'basic_app:login_bloodbank'%}">Blood Bank Login</a>
+          </li>
+          {%endif%}
+          <!--<li class="nav-item">
+            <a class="nav-link" href="{%url 'basic_app:login_bloodbank'%}">Blood Bank Login</a>
+          </li>
+          <a href="{%url 'basic_app:login_bloodbank'%}" class="myButton" style="margin:20px;">BloodBank Login</a>
+          -->
+
+
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'app:drop' %}">Current Requests</a>
+          </li>
+          <li>
+            <a class="nav-link" href="{% url 'basic_app:get_reports' %}">Get Reports</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'app:about' %}">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact:contactview' %}">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'app:feedback' %}">Feedback</a>
+          </li>
+          <!--{%if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+
+            <li>
+              <a class="nav-link" href="{% url 'basic_app:editdetails' %}">Edit details</a>
+            </li>
+
+          {%else%}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'basic_app:user_login' %}">Login</a>
+            </li>
+          {%endif%}-->
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          {%if user.is_authenticated %}
+          <a href="{% url 'logout' %}" class="myButton" style="margin:20px;">Logout</a>
+          <a href="{% url 'basic_app:editdetails' %}" class="myButton" style="margin:20px;">Edit Details</a>
+          {%else%}
+          <a href="{% url 'basic_app:user_login' %}" class="myButton" style="margin:20px;">User Login</a>
+          {%endif%}
+          {%if user.is_anonymous%}
+          <a href="{% url 'basic_app:register' %}" class="myButton">User SignUp</a>
+          {%endif%}
+        </form>
+      </div>
+    </nav>
+<div class="container">
+
+
+    <h1>Camp Schedule</h1>
+
+    <div>
+
+      {%if detailsNotTaken %}
+      <form action="{% url 'basic_app:camps' %}" method="post">
+        {%csrf_token%}
+          <div class="input-group mb-3 pull-left" style="text-align:center;">
+            <select class="custom-select" id="state" name="state">
+              <option selected>Select State</option>
+
+              <option value="Andaman And Nicobar Islands">Andaman And Nicobar Islands</option>
+              <option value="Andhra Pradesh">Andhra Pradesh</option>
+              <option value="Arunachal Pradesh">Arunachal Pradhesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Chattisgarh">Chattisgarh</option>
+              <option value="Dadra & Nagar Haveli">Dadra & Nagar Haveli</option>
+              <option value="Daman & Diu">Daman & Diu</option>
+              <option value ="Delhi">Delhi</option>
+              <option value ="Goa">Goa</option>
+              <option value ="Gujarat">Gujarat</option>
+              <option value ="Haryana">Haryana</option>
+              <option value ="Himachal pradesh">Himachal Pradesh</option>
+              <option value ="Jammu & Kashmir">Jammu & Kashmir</option>
+              <option value ="Jharkhand">Jharkhand</option>
+              <option value ="Karnataka">Karnataka</option>
+              <option value ="Kerala">Kerala</option>
+              <option value ="Lakshadweep">Lakshadweep</option>
+              <option value ="Madhya Pradesh">Madhya Pradesh</option>
+              <option value ="Maharashtra">Maharashtra</option>
+              <option value ="Manipur">Manipur</option>
+              <option value ="Meghalaya">Meghalaya</option>
+              <option value ="Mizoram">Mizoram</option>
+              <option value ="Nagaland">Nagaland</option>
+              <option value ="Odisha">Odisha</option>
+              <option value ="Puducherry">Puducherry</option>
+              <option value ="Punjab">Punjab</option>
+              <option value ="Rajastan">Rajastan</option>
+              <option value ="Sikkim">Sikkim</option>
+              <option value ="Tamil Nadu">Tamil Nadu</option>
+              <option value ="Telangana">Telangana</option>
+              <option value ="Tripura">Tripura</option>
+              <option value ="Uttarakhand">Uttarakhand</option>
+              <option value ="Uttar Pradesh">Uttar Pradesh</option>
+              <option value ="West Bengal">West Bengal</option>
+
+            </select>
+
+
+          </div>
+<br>
+          <div class="input-group mb-3 pull-left" style="text-align:center;">
+            <select name="orgby" class="form">
+              <option disabled selected>Select Organization Name</option>
+              <option value="All">All</option>
+            {% for entry in items %}
+                <option value="{{ entry.Organization_Name }}">{{ entry.Organization_Name }}</option>
+            {% endfor %}
+
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+
+        {%else%}
+        <div class="container">
+          <form action="{% url 'basic_app:camps' %}" method="post">
+              <table class="table">
+            <thead>
+            <tr>
+
+              <th scope="col">Organization Name</th>
+              <th scope="col">Organization Date</th>
+              <th scope="col">Address</th>
+              <th scope="col">State</th>
+              <th scope="col">District</th>
+              <th scope="col">Contact</th>
+              <th scope="col">Conducted By</th>
+            </tr>
+            </thead>
+            <tbody>
+              {%for campOb in camp%}
+                <tr>
+
+                  <td>{{campOb.Organization_Name}}</td>
+                  <td>{{campOb.Organization_Date}}</td>
+                  <td>{{campOb.Address}}</td>
+                  <td>{{campOb.State}}</td>
+                  <td>{{campOb.District}}</td>
+                  <td>{{campOb.Contact}}</td>
+                  <td>{{campOb.Conducted_by}}</td>
+                  </tr>
+              {%endfor%}
+
+
+                <!-- <tr>
+                  <th scope="row">{{stock.id}}</th>
+                  <td>{{bank.Blood_Bank_Name}}</td>
+                  <td>{{bank.Category}}</td>
+                  <td>{{stock.Number_of_bags}}</td>
+                </tr>
+               -->
+            </table>
+            </form>
+          </div>
+
+          {%endif%}
+      </div>
+      </div>
+
+
+    <br>
+    <br>
+    <br>
+
+
+
+      <script src="https://kit.fontawesome.com/e92ddfb58e.js" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  </body>
+</html>
